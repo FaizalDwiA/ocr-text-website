@@ -1,23 +1,38 @@
 import React, { useState, useCallback, useRef } from 'react';
 import { Header } from './components/Header';
+import { ModeSelector } from './components/ModeSelector';
 import { TabNavigation } from './components/TabNavigation';
 import { UploadPanel } from './components/UploadPanel';
 import { CameraPanel } from './components/CameraPanel';
 import { CropperPanel } from './components/CropperPanel';
 import { ConfigPanel } from './components/ConfigPanel';
 import { ProgressTracker } from './components/ProgressTracker';
+
+import { AudioInputPanel } from './components/AudioInputPanel';
+import { AudioPlayerViewport } from './components/AudioPlayerViewport';
+import { SpeechConfigPanel } from './components/SpeechConfigPanel';
+
 import { WorkspaceTerminal } from './components/WorkspaceTerminal';
 import { TipsCard } from './components/TipsCard';
 import { Footer } from './components/Footer';
 
 import { useOcr } from './hooks/useOcr';
 import { useCamera } from './hooks/useCamera';
+import { useSpeechToText } from './hooks/useSpeechToText';
 
 export function App() {
+  const [appMode, setAppMode] = useState('ocr'); // 'ocr' | 'speech'
+
+  // STATE OCR (Gambar/Kamera)
   const [activeTab, setActiveTab] = useState('upload'); // 'upload' | 'camera'
   const [selectedImage, setSelectedImage] = useState(null);
-  const [language, setLanguage] = useState('ind');
+  const [ocrLanguage, setOcrLanguage] = useState('ind');
   const cropperRef = useRef(null);
+
+  // STATE SPEECH TO TEXT (Musik/Video/Mic)
+  const [speechInputSource, setSpeechInputSource] = useState('file'); // 'file' | 'mic'
+  const [mediaData, setMediaData] = useState(null); // { file, url, type, name, size }
+  const mediaRef = useRef(null);
 
   const {
     isProcessing,
@@ -39,6 +54,20 @@ export function App() {
     captureSnapshot,
   } = useCamera();
 
+  const {
+    isTranscribing,
+    transcriptText,
+    setTranscriptText,
+    interimText,
+    speechLanguage,
+    setSpeechLanguage,
+    speechError,
+    startTranscribing,
+    stopTranscribing,
+    clearTranscript,
+  } = useSpeechToText();
+
+  // HANDLERS MODE OCH
   const handleTabChange = useCallback((tab) => {
     setActiveTab(tab);
     if (tab === 'upload') {
@@ -68,80 +97,151 @@ export function App() {
 
   const handleTriggerOcr = useCallback(async () => {
     if (!cropperRef.current) return;
-
     try {
       const croppedCanvas = cropperRef.current.getCroppedCanvas();
       if (!croppedCanvas) {
         alert('Gagal mengambil area gambar terpotong. Harap coba lagi.');
         return;
       }
-
       const croppedDataUrl = croppedCanvas.toDataURL('image/png');
-      const text = await processImage(croppedDataUrl, language);
+      const text = await processImage(croppedDataUrl, ocrLanguage);
       if (!text) {
-        setExtractedText('(Pemberitahuan: Gambar berhasil diproses, namun AI tidak menemukan karakter teks di area terpilih. Coba ubah area potong atau bahasa.)');
+        setExtractedText('(Pemberitahuan: AI tidak menemukan karakter teks tertulis di area potongan terpilih.)');
       }
     } catch (err) {
-      setExtractedText(`GGL_ERR: Terjadi kesalahan saat membaca dokumen.\nDetail: ${err.message}`);
+      setExtractedText(`GGL_ERR: Error ekstraksi OCR:\n${err.message}`);
     }
-  }, [language, processImage, setExtractedText]);
+  }, [ocrLanguage, processImage, setExtractedText]);
+
+  // HANDLERS SPEECH TO TEXT
+  const handleMediaSelected = useCallback((media) => {
+    setMediaData(media);
+    setSpeechInputSource('file');
+  }, []);
+
+  const handleMediaRefReady = useCallback((ref) => {
+    mediaRef.current = ref;
+  }, []);
+
+  const handleChangeMedia = useCallback(() => {
+    if (mediaData?.url) {
+      URL.revokeObjectURL(mediaData.url);
+    }
+    setMediaData(null);
+    mediaRef.current = null;
+    stopTranscribing();
+  }, [mediaData, stopTranscribing]);
+
+  const handleSelectMicMode = useCallback(() => {
+    handleChangeMedia();
+    setSpeechInputSource('mic');
+  }, [handleChangeMedia]);
+
+  const handleStartTranscribing = useCallback(() => {
+    startTranscribing(speechInputSource === 'file' ? mediaRef.current : null);
+  }, [speechInputSource, startTranscribing]);
 
   return (
     <div className="bg-slate-950 text-slate-200 min-h-screen font-sans antialiased selection:bg-indigo-500 selection:text-white cosmic-mesh">
       <Header />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <ModeSelector currentMode={appMode} onSelectMode={setAppMode} />
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* COLUMN 1: IMAGE SOURCES, CAMERA & CROPPER VIEWPORT */}
+          {/* COLUMN 1: MEDIA VIEWPORT (Gambar/Kamera OR Musik/Video/Mic) */}
           <section id="column-source" className="lg:col-span-7 space-y-6">
-            <TabNavigation activeTab={activeTab} onSelectTab={handleTabChange} />
+            {appMode === 'ocr' ? (
+              <>
+                <TabNavigation activeTab={activeTab} onSelectTab={handleTabChange} />
 
-            <div id="viewport-card" className="bg-slate-900/50 rounded-2xl border border-slate-800/80 shadow-md overflow-hidden flex flex-col min-h-[400px]">
-              {selectedImage ? (
-                <CropperPanel
-                  imageUrl={selectedImage}
-                  onCropperReady={handleCropperReady}
-                  onChangeImage={handleChangeImage}
-                />
-              ) : activeTab === 'upload' ? (
-                <UploadPanel onImageSelected={handleImageSelected} />
-              ) : (
-                <CameraPanel
-                  videoRef={videoRef}
-                  isCameraActive={isCameraActive}
-                  cameraError={cameraError}
-                  onStartStream={startStream}
-                  onToggleFacingMode={toggleFacingMode}
-                  onCapture={handleCapture}
-                />
-              )}
-            </div>
+                <div id="viewport-card" className="bg-slate-900/50 rounded-2xl border border-slate-800/80 shadow-md overflow-hidden flex flex-col min-h-[400px]">
+                  {selectedImage ? (
+                    <CropperPanel
+                      imageUrl={selectedImage}
+                      onCropperReady={handleCropperReady}
+                      onChangeImage={handleChangeImage}
+                    />
+                  ) : activeTab === 'upload' ? (
+                    <UploadPanel onImageSelected={handleImageSelected} />
+                  ) : (
+                    <CameraPanel
+                      videoRef={videoRef}
+                      isCameraActive={isCameraActive}
+                      cameraError={cameraError}
+                      onStartStream={startStream}
+                      onToggleFacingMode={toggleFacingMode}
+                      onCapture={handleCapture}
+                    />
+                  )}
+                </div>
+              </>
+            ) : (
+              <div id="speech-viewport-card" className="bg-slate-900/50 rounded-2xl border border-slate-800/80 shadow-md overflow-hidden flex flex-col min-h-[400px] p-4">
+                {mediaData ? (
+                  <AudioPlayerViewport
+                    mediaData={mediaData}
+                    onMediaRefReady={handleMediaRefReady}
+                    onChangeMedia={handleChangeMedia}
+                  />
+                ) : (
+                  <AudioInputPanel
+                    onMediaSelected={handleMediaSelected}
+                    onSelectMicMode={handleSelectMicMode}
+                    inputSource={speechInputSource}
+                  />
+                )}
+              </div>
+            )}
 
             <TipsCard />
           </section>
 
-          {/* COLUMN 2: OCR CONFIGURATION, PROGRESS TRACKER & OUTPUT AREA */}
+          {/* COLUMN 2: CONFIGURATION & TERMINAL WORKSPACE */}
           <section id="column-extract" className="lg:col-span-12 xl:col-span-5 space-y-6">
-            <ConfigPanel
-              language={language}
-              onLanguageChange={setLanguage}
-              onTriggerOcr={handleTriggerOcr}
-              isDisabled={!selectedImage}
-              isProcessing={isProcessing}
-            />
+            {appMode === 'ocr' ? (
+              <>
+                <ConfigPanel
+                  language={ocrLanguage}
+                  onLanguageChange={setOcrLanguage}
+                  onTriggerOcr={handleTriggerOcr}
+                  isDisabled={!selectedImage}
+                  isProcessing={isProcessing}
+                />
 
-            <ProgressTracker
-              isProcessing={isProcessing}
-              progressPercent={progressPercent}
-              progressState={progressState}
-            />
+                <ProgressTracker
+                  isProcessing={isProcessing}
+                  progressPercent={progressPercent}
+                  progressState={progressState}
+                />
 
-            <WorkspaceTerminal
-              text={extractedText}
-              onTextChange={setExtractedText}
-              onClear={clearExtractedText}
-            />
+                <WorkspaceTerminal
+                  text={extractedText}
+                  onTextChange={setExtractedText}
+                  onClear={clearExtractedText}
+                />
+              </>
+            ) : (
+              <>
+                <SpeechConfigPanel
+                  speechLanguage={speechLanguage}
+                  onSpeechLanguageChange={setSpeechLanguage}
+                  isTranscribing={isTranscribing}
+                  onStartTranscribing={handleStartTranscribing}
+                  onStopTranscribing={stopTranscribing}
+                  isDisabled={speechInputSource === 'file' && !mediaData}
+                  speechError={speechError}
+                  interimText={interimText}
+                />
+
+                <WorkspaceTerminal
+                  text={transcriptText}
+                  onTextChange={setTranscriptText}
+                  onClear={clearTranscript}
+                />
+              </>
+            )}
           </section>
         </div>
       </main>
