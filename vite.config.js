@@ -10,7 +10,7 @@ export default defineConfig({
     emptyOutDir: false,
   },
   server: {
-    port: 3000,
+    port: 1174,
     host: '0.0.0.0',
     hmr: process.env.DISABLE_HMR !== 'true',
     watch: process.env.DISABLE_HMR === 'true' ? null : {},
