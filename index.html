@@ -1,273 +1,320 @@
 <!doctype html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OCR Text</title>
-    <!-- Import Lucide Icons CDN for beautiful icons -->
-    <script src="https://unpkg.com/lucide@0.475.0/dist/umd/lucide.min.js"></script>
-    <!-- Import Tesseract.js CDN for robust cross-origin iframe compliance -->
-    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.0/dist/tesseract.min.js"></script>
-    <script type="module" crossorigin src="./assets/index-DZSSqk5S.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-i3AhEzCc.css">
-  </head>
-  <body class="bg-slate-950 text-slate-200 min-h-screen font-sans antialiased selection:bg-indigo-500 selection:text-white cosmic-mesh">
 
-    <!-- Header / Navbar Section -->
-    <header id="app-header" class="border-b border-slate-900 bg-slate-950/50 backdrop-blur-md sticky top-0 z-40">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <div id="logo-icon-container" class="p-2.5 bg-indigo-600 text-white rounded-xl shadow-lg shadow-indigo-500/20">
-            <i data-lucide="scan-text" class="w-6 h-6 animate-pulse"></i>
-          </div>
-          <div>
-            <h1 id="app-title" class="text-xl font-bold text-white tracking-tight flex items-center gap-2">
-              OCR <span class="text-indigo-500">Text</span>
-            </h1>
-            <p id="app-subtitle" class="text-xs text-slate-400 font-medium">Ubah gambar menjadi teks digital instan tanpa kirim data ke server (100% Client-Side)</p>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OCR Text</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/logo-mPukaSW-.svg" />
+  <!-- Import Lucide Icons CDN for beautiful icons -->
+  <script src="https://unpkg.com/lucide@0.475.0/dist/umd/lucide.min.js"></script>
+  <!-- Import Tesseract.js CDN for robust cross-origin iframe compliance -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.0/dist/tesseract.min.js"></script>
+  <script type="module" crossorigin src="./assets/index-D0jRUjif.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-hkeMj0rT.css">
+</head>
+
+<body
+  class="bg-slate-950 text-slate-200 min-h-screen font-sans antialiased selection:bg-indigo-500 selection:text-white cosmic-mesh">
+
+  <!-- Header / Navbar Section -->
+  <header id="app-header" class="border-b border-slate-900 bg-slate-950/50 backdrop-blur-md sticky top-0 z-40">
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div id="logo-icon-container" class="relative group">
+          <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%20width='100%25'%20height='100%25'%3e%3cdefs%3e%3c!--%20Background%20Gradient%20--%3e%3clinearGradient%20id='bgGradient'%20x1='0%25'%20y1='0%25'%20x2='100%25'%20y2='100%25'%3e%3cstop%20offset='0%25'%20stop-color='%234F46E5'%20/%3e%3cstop%20offset='50%25'%20stop-color='%236366F1'%20/%3e%3cstop%20offset='100%25'%20stop-color='%238B5CF6'%20/%3e%3c/linearGradient%3e%3c!--%20Scanner%20Glow%20Effect%20--%3e%3clinearGradient%20id='scanLine'%20x1='0%25'%20y1='0%25'%20x2='100%25'%20y2='0%25'%3e%3cstop%20offset='0%25'%20stop-color='%2338BDF8'%20stop-opacity='0'%20/%3e%3cstop%20offset='50%25'%20stop-color='%2338BDF8'%20stop-opacity='1'%20/%3e%3cstop%20offset='100%25'%20stop-color='%2338BDF8'%20stop-opacity='0'%20/%3e%3c/linearGradient%3e%3c!--%20Glass%20Glow%20Overlay%20--%3e%3clinearGradient%20id='glassGlow'%20x1='0%25'%20y1='0%25'%20x2='100%25'%20y2='100%25'%3e%3cstop%20offset='0%25'%20stop-color='%23FFFFFF'%20stop-opacity='0.25'%20/%3e%3cstop%20offset='100%25'%20stop-color='%23FFFFFF'%20stop-opacity='0.0'%20/%3e%3c/linearGradient%3e%3cfilter%20id='glow'%20x='-20%25'%20y='-20%25'%20width='140%25'%20height='140%25'%3e%3cfeGaussianBlur%20stdDeviation='8'%20result='blur'%20/%3e%3cfeComposite%20in='SourceGraphic'%20in2='blur'%20operator='over'%20/%3e%3c/filter%3e%3c/defs%3e%3c!--%20Base%20Rounded%20Container%20--%3e%3crect%20x='32'%20y='32'%20width='448'%20height='448'%20rx='112'%20fill='url(%23bgGradient)'%20/%3e%3crect%20x='32'%20y='32'%20width='448'%20height='448'%20rx='112'%20fill='url(%23glassGlow)'%20/%3e%3c!--%20Document%20/%20Lens%20Frame%20--%3e%3crect%20x='120'%20y='110'%20width='272'%20height='292'%20rx='24'%20fill='%230F172A'%20fill-opacity='0.85'%20stroke='%23818CF8'%20stroke-width='6'%20stroke-opacity='0.4'%20/%3e%3c!--%20Document%20Text%20Lines%20--%3e%3c!--%20Line%201%20(Header)%20--%3e%3crect%20x='160'%20y='160'%20width='120'%20height='18'%20rx='9'%20fill='%2338BDF8'%20/%3e%3crect%20x='296'%20y='160'%20width='56'%20height='18'%20rx='9'%20fill='%23818CF8'%20/%3e%3c!--%20Line%202%20--%3e%3crect%20x='160'%20y='200'%20width='192'%20height='14'%20rx='7'%20fill='%2394A3B8'%20fill-opacity='0.8'%20/%3e%3c!--%20Line%203%20--%3e%3crect%20x='160'%20y='234'%20width='150'%20height='14'%20rx='7'%20fill='%2394A3B8'%20fill-opacity='0.8'%20/%3e%3c!--%20Line%204%20--%3e%3crect%20x='160'%20y='268'%20width='176'%20height='14'%20rx='7'%20fill='%2394A3B8'%20fill-opacity='0.6'%20/%3e%3c!--%20Scanner%20Reticle%20Corners%20--%3e%3c!--%20Top%20Left%20--%3e%3cpath%20d='M%20100%20160%20L%20100%20130%20C%20100%20113.43%20113.43%20100%20130%20100%20L%20160%20100'%20fill='none'%20stroke='%2338BDF8'%20stroke-width='12'%20stroke-linecap='round'%20filter='url(%23glow)'%20/%3e%3c!--%20Top%20Right%20--%3e%3cpath%20d='M%20352%20100%20L%20382%20100%20C%20398.57%20100%20412%20113.43%20412%20130%20L%20412%20160'%20fill='none'%20stroke='%2338BDF8'%20stroke-width='12'%20stroke-linecap='round'%20filter='url(%23glow)'%20/%3e%3c!--%20Bottom%20Left%20--%3e%3cpath%20d='M%20100%20352%20L%20100%20382%20C%20100%20398.57%20113.43%20412%20130%20412%20L%20160%20412'%20fill='none'%20stroke='%2338BDF8'%20stroke-width='12'%20stroke-linecap='round'%20filter='url(%23glow)'%20/%3e%3c!--%20Bottom%20Right%20--%3e%3cpath%20d='M%20352%20412%20L%20382%20412%20C%20398.57%20412%20412%20398.57%20412%20382%20L%20412%20352'%20fill='none'%20stroke='%2338BDF8'%20stroke-width='12'%20stroke-linecap='round'%20filter='url(%23glow)'%20/%3e%3c!--%20Laser%20Scan%20Beam%20Line%20--%3e%3cline%20x1='80'%20y1='310'%20x2='432'%20y2='310'%20stroke='url(%23scanLine)'%20stroke-width='10'%20stroke-linecap='round'%20filter='url(%23glow)'%20/%3e%3cline%20x1='120'%20y1='310'%20x2='392'%20y2='310'%20stroke='%23FFFFFF'%20stroke-width='4'%20stroke-linecap='round'%20/%3e%3c!--%20Optical%20Lens%20/%20OCR%20Target%20Core%20--%3e%3ccircle%20cx='330'%20cy='330'%20r='32'%20fill='%234F46E5'%20stroke='%2338BDF8'%20stroke-width='6'%20filter='url(%23glow)'%20/%3e%3cpath%20d='M%20322%20330%20L%20338%20330%20M%20330%20322%20L%20330%20338'%20stroke='%23FFFFFF'%20stroke-width='4'%20stroke-linecap='round'%20/%3e%3c/svg%3e" alt="OCR Text Logo" class="w-10 h-10 rounded-xl shadow-lg shadow-indigo-500/30 object-contain transition-transform duration-300 group-hover:scale-105" />
         </div>
-        <div class="flex items-center gap-2 text-xs font-semibold text-slate-300 bg-slate-900/90 px-3 py-1.5 rounded-lg border border-slate-800 shadow-sm">
-          <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span id="network-status">Online</span>
+        <div>
+          <h1 id="app-title" class="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+            OCR <span class="text-indigo-500">Text</span>
+          </h1>
+          <p id="app-subtitle" class="text-xs text-slate-400 font-medium">Optical Character Recognition Text</p>
         </div>
       </div>
-    </header>
+      <div
+        class="flex items-center gap-2 text-xs font-semibold text-slate-300 bg-slate-900/90 px-3 py-1.5 rounded-lg border border-slate-800 shadow-sm">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span id="network-status">Online</span>
+      </div>
+    </div>
+  </header>
 
-    <!-- Main Container -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        
-        <!-- COLUMN 1: IMAGE SOURCES, CAMERA & CROPPER VIEWPORT (7 columns wide) -->
-        <section id="column-source" class="lg:col-span-7 space-y-6">
-          
-          <!-- Tab Navigation for Image Input Methods -->
-          <div id="tab-nav-card" class="bg-slate-900/80 p-2 border border-slate-850 rounded-2xl shadow-lg flex gap-2">
-            <button id="tab-btn-upload" class="flex-1 py-3 px-4 rounded-xl font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-md shadow-indigo-500/10">
-              <i data-lucide="image" class="w-4 h-4"></i>
-              <span>Unggah Gambar / Dokumen</span>
-            </button>
-            <button id="tab-btn-camera" class="flex-1 py-3 px-4 rounded-xl font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2 text-slate-400 hover:bg-slate-800 hover:text-slate-200">
-              <i data-lucide="camera" class="w-4 h-4"></i>
-              <span>Gunakan Kamera Langsung</span>
-            </button>
-          </div>
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-          <!-- Main Input Content Viewports -->
-          <div id="viewport-card" class="bg-slate-900/50 rounded-2xl border border-slate-800/80 shadow-md overflow-hidden flex flex-col min-h-[400px]">
-            
-            <!-- Context 1: Drag-and-Drop / Upload Area -->
-            <div id="upload-panel" class="flex-1 flex flex-col justify-center items-center p-8 transition-all duration-200 hover:bg-slate-900/40 cursor-pointer border-2 border-dashed border-slate-800 m-4 rounded-xl">
-              <input type="file" id="image-file-input" accept="image/*" class="hidden" />
-              <div id="upload-prompt" class="text-center max-w-sm space-y-4">
-                <div class="inline-flex p-4 bg-indigo-550/10 text-indigo-400 rounded-full border border-indigo-500/20">
-                  <i data-lucide="cloud-upload" class="w-10 h-10"></i>
-                </div>
-                <div class="space-y-1">
-                  <p class="text-sm font-bold text-slate-200">Seret & lepas berkas di sini</p>
-                  <p class="text-xs text-slate-400">Mendukung format gambar PNG, JPEG, atau WebP</p>
-                </div>
-                <button type="button" id="browse-btn" class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-slate-800 hover:bg-indigo-650 hover:text-white text-slate-200 font-semibold text-xs rounded-lg transition-all duration-200 border border-slate-700 shadow-sm gap-2">
-                  <i data-lucide="folder-search" class="w-3.5 h-3.5"></i>
-                  Pilih Gambar Manual
-                </button>
-              </div>
-            </div>
+      <!-- COLUMN 1: IMAGE SOURCES, CAMERA & CROPPER VIEWPORT (7 columns wide) -->
+      <section id="column-source" class="lg:col-span-7 space-y-6">
 
-            <!-- Context 2: Live Camera Viewport (hidden initially) -->
-            <div id="camera-panel" class="hidden flex-1 p-6 flex flex-col items-center justify-center space-y-4">
-              <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-slate-950 shadow-inner max-h-[400px] border border-slate-800">
-                <video id="camera-preview" autoplay playsinline class="w-full h-full object-cover"></video>
-                <div class="absolute bottom-3 left-3 bg-red-600 text-white text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded flex items-center gap-1.5 animate-pulse">
-                  <span class="inline-block w-1.5 h-1.5 rounded-full bg-white"></span>
-                  LIVE CAMERA
-                </div>
-              </div>
-              <div class="flex flex-wrap items-center justify-center gap-3 w-full">
-                <!-- Rotate/Toggle Rear Camera -->
-                <button type="button" id="camera-toggle-btn" class="inline-flex items-center justify-center px-4 py-2.5 bg-slate-800 hover:bg-slate-750 text-slate-200 font-semibold text-xs rounded-xl transition-all duration-200 border border-slate-700 gap-2 shadow-xs">
-                  <i data-lucide="refresh-cw" class="w-4 h-4"></i>
-                  Ganti Kamera (Toggle Front/Back)
-                </button>
-                <!-- Snapshot Capture Trigger -->
-                <button type="button" id="camera-capture-btn" class="inline-flex items-center justify-center px-6 py-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-505 hover:to-violet-505 text-white font-bold text-xs rounded-xl transition-all duration-200 shadow-lg shadow-indigo-600/10 gap-2">
-                  <i data-lucide="aperture" class="w-4 h-4"></i>
-                  Ambil Foto Dokumen
-                </button>
-              </div>
-            </div>
+        <!-- Tab Navigation for Image Input Methods -->
+        <div id="tab-nav-card" class="bg-slate-900/80 p-2 border border-slate-850 rounded-2xl shadow-lg flex gap-2">
+          <button id="tab-btn-upload"
+            class="flex-1 py-3 px-4 rounded-xl font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-md shadow-indigo-500/10">
+            <i data-lucide="image" class="w-4 h-4"></i>
+            <span>Unggah Gambar / Dokumen</span>
+          </button>
+          <button id="tab-btn-camera"
+            class="flex-1 py-3 px-4 rounded-xl font-semibold text-sm transition-all duration-200 flex items-center justify-center gap-2 text-slate-400 hover:bg-slate-800 hover:text-slate-200">
+            <i data-lucide="camera" class="w-4 h-4"></i>
+            <span>Gunakan Kamera Langsung</span>
+          </button>
+        </div>
 
-            <!-- Context 3: Interactive Cropper Viewport (hidden initially, shown when image loaded) -->
-            <div id="cropper-panel" class="hidden flex-1 p-6 flex flex-col space-y-4">
-              <div class="w-full bg-slate-950 rounded-xl overflow-hidden flex items-center justify-center min-h-[300px] border border-slate-800 relative">
-                <!-- Guide dots backdrop for cyber flavor -->
-                <div class="absolute inset-0 opacity-40 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
-                <div class="max-w-full z-10">
-                  <img id="cropper-image" src="" alt="Workspace" class="block max-w-full h-auto" />
-                </div>
-              </div>
-              <!-- Cropper Action Controllers -->
-              <div id="cropper-toolbox" class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 flex flex-wrap items-center justify-between gap-3">
-                <p class="text-xs text-slate-400 font-semibold">Atur batas kotak untuk memilih teks:</p>
-                <div class="flex flex-wrap items-center gap-1.5">
-                  <button type="button" id="crop-zoom-in" title="Perbesar" class="p-2 hover:bg-indigo-950/40 hover:text-indigo-400 text-slate-300 rounded-lg border border-slate-700 bg-slate-850 transition-all shadow-xs">
-                    <i data-lucide="zoom-in" class="w-4 h-4"></i>
-                  </button>
-                  <button type="button" id="crop-zoom-out" title="Perkecil" class="p-2 hover:bg-indigo-950/40 hover:text-indigo-400 text-slate-300 rounded-lg border border-slate-700 bg-slate-850 transition-all shadow-xs">
-                    <i data-lucide="zoom-out" class="w-4 h-4"></i>
-                  </button>
-                  <button type="button" id="crop-rotate-left" title="Putar Kiri" class="p-2 hover:bg-indigo-950/40 hover:text-indigo-400 text-slate-300 rounded-lg border border-slate-700 bg-slate-850 transition-all shadow-xs">
-                    <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
-                  </button>
-                  <button type="button" id="crop-rotate-right" title="Putar Kanan" class="p-2 hover:bg-indigo-950/40 hover:text-indigo-400 text-slate-300 rounded-lg border border-slate-700 bg-slate-850 transition-all shadow-xs">
-                    <i data-lucide="rotate-cw" class="w-4 h-4"></i>
-                  </button>
-                  <button type="button" id="crop-flip-h" title="Balik Horizontal" class="p-2 hover:bg-indigo-950/40 hover:text-indigo-400 text-slate-300 rounded-lg border border-slate-700 bg-slate-850 transition-all shadow-xs">
-                    <i data-lucide="flip-horizontal" class="w-4 h-4"></i>
-                  </button>
-                  <button type="button" id="crop-reset" title="Batalkan Perubahan" class="inline-flex items-center px-3 py-2 bg-slate-850 hover:bg-red-950/40 hover:text-red-400 text-slate-300 rounded-lg border border-slate-700 transition-all shadow-xs gap-1 text-xs font-semibold">
-                    <i data-lucide="undo-2" class="w-3.5 h-3.5"></i>
-                    Reset
-                  </button>
-                  <button type="button" id="crop-load-new" title="Ubah Gambar" class="inline-flex items-center px-3 py-2 bg-slate-850 hover:bg-indigo-950/40 hover:text-indigo-400 text-slate-300 rounded-lg border border-slate-700 transition-all shadow-xs gap-1 text-xs font-semibold">
-                    <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
-                    Ganti
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Instructions/Advantage Card helper for Users -->
-          <div id="instruction-card" class="bg-indigo-950/20 rounded-2xl p-5 border border-indigo-950/80 flex gap-4 items-start">
-            <div class="p-2.5 bg-indigo-500/10 text-indigo-450 rounded-xl">
-              <i data-lucide="sparkles" class="w-5 h-5"></i>
-            </div>
-            <div class="space-y-1">
-              <h4 class="text-sm font-bold text-indigo-350">Tips Hasil Maksimal</h4>
-              <p class="text-xs text-indigo-200/90 leading-relaxed">Posisikan teks secara tegak dan potong dengan pas hanya pada bidang paragraf atau kolom yang Anda butuhkan. Ini akan mencegah distorsi background dan meningkatkan kecepatan akurasi mesin AI OCR.</p>
-            </div>
-          </div>
+        <!-- Main Input Content Viewports -->
+        <div id="viewport-card"
+          class="bg-slate-900/50 rounded-2xl border border-slate-800/80 shadow-md overflow-hidden flex flex-col min-h-[400px]">
 
-        </section>
-
-        <!-- COLUMN 2: OCR CONFIGURATION, PROGRESS TRACKER & OUTPUT AREA (5 columns wide) -->
-        <section id="column-extract" class="lg:col-span-12 xl:col-span-5 space-y-6">
-          
-          <!-- Engine Settings Panel Card -->
-          <div id="config-card" class="bg-slate-900/50 rounded-2xl p-6 border border-slate-850 space-y-5 shadow-lg">
-            <h3 class="text-md font-bold text-white flex items-center gap-1.5">
-              <i data-lucide="settings" class="w-4 h-4 text-indigo-400"></i>
-              Konfigurasi Mesin OCR
-            </h3>
-            
-            <!-- Language Selector Dropdown -->
-            <div class="space-y-2">
-              <label for="ocr-language" class="block text-xs font-bold text-slate-400 uppercase tracking-wider">Bahasa Dokumen Gambar</label>
-              <div class="relative">
-                <select id="ocr-language" class="w-full pl-3 pr-10 py-3 bg-slate-950 hover:bg-slate-900 border border-slate-700/80 rounded-xl font-medium text-sm transition-all text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-550 focus:border-indigo-550">
-                  <option value="ind" selected>Bahasa Indonesia ('ind')</option>
-                  <option value="eng">Bahasa Inggris ('eng')</option>
-                  <option value="ind+eng">Kombinasi Indonesia + Inggris</option>
-                  <option value="jpa">Bahasa Jepang ('jpa')</option>
-                  <option value="zho_sim">Bahasa Cina Sederhana ('zho_sim')</option>
-                  <option value="ara">Bahasa Arab ('ara')</option>
-                </select>
-                <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400">
-                  <i data-lucide="chevron-down" class="w-4 h-4"></i>
-                </div>
-              </div>
-              <p class="text-[11px] text-slate-500">Mesin akan mengunduh paket data latih bahasa yang sesuai langsung ke browser Anda secara otomatis.</p>
-            </div>
-
-            <!-- Core Trigger Trigger button -->
-            <button type="button" id="extract-trigger-btn" disabled class="w-full py-4 px-6 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/10 disabled:from-slate-800 disabled:to-slate-800 disabled:text-slate-600 disabled:shadow-none disabled:cursor-not-allowed">
-              <i data-lucide="scan" class="w-4 h-4"></i>
-              Mulai Ekstraksi Teks (OCR)
-            </button>
-          </div>
-
-          <!-- Live Progress Tracker Pane (hidden by default) -->
-          <div id="progress-card" class="hidden bg-slate-900/70 rounded-2xl p-6 border border-indigo-900/60 shadow-lg space-y-4">
-            <div class="flex items-center justify-between text-xs font-bold">
-              <span id="progress-state" class="text-indigo-400 flex items-center gap-1.5">
-                <i data-lucide="loader-2" class="w-3.5 h-3.5 animate-spin"></i>
-                Menginisialisasi Engine...
-              </span>
-              <span id="progress-percent" class="text-indigo-400 bg-indigo-950/50 border border-indigo-900 px-2 py-0.5 rounded-full">0%</span>
-            </div>
-            <!-- Progress Bar Tracker -->
-            <div class="w-full h-2.5 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
-              <div id="progress-bar" class="h-full bg-gradient-to-r from-indigo-500 to-violet-500 transition-all duration-155 rounded-full" style="width: 0%"></div>
-            </div>
-          </div>
-
-          <!-- Extracted Text Workspace Area -->
-          <div id="workspace-card" class="bg-slate-900 rounded-2xl border border-slate-800 shadow-md space-y-0 flex flex-col min-h-[350px] overflow-hidden">
-            <div class="flex items-center justify-between border-b border-slate-800/80 px-5 py-3.5 bg-slate-900/50">
-              <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
-                <i data-lucide="terminal" class="w-4 h-4 text-emerald-400"></i>
-                Terminal Hasil Ekstraksi
-              </h3>
-              <!-- Copy trigger badge feedback -->
-              <span id="copy-success-badge" class="hidden text-[10px] bg-emerald-950/80 text-emerald-300 border border-emerald-900 font-bold tracking-wide px-2.5 py-0.5 rounded">
-                BERHASIL DISALIN!
-              </span>
-            </div>
-
-            <!-- Empty State Context -->
-            <div id="workspace-empty" class="flex-1 flex flex-col items-center justify-center text-center p-8 space-y-4">
-              <div class="p-3 bg-slate-950 text-slate-500 rounded-full border border-slate-850">
-                <i data-lucide="file-text" class="w-8 h-8"></i>
+          <!-- Context 1: Drag-and-Drop / Upload Area -->
+          <div id="upload-panel"
+            class="flex-1 flex flex-col justify-center items-center p-8 transition-all duration-200 hover:bg-slate-900/40 cursor-pointer border-2 border-dashed border-slate-800 m-4 rounded-xl">
+            <input type="file" id="image-file-input" accept="image/*" class="hidden" />
+            <div id="upload-prompt" class="text-center max-w-sm space-y-4">
+              <div class="inline-flex p-4 bg-indigo-550/10 text-indigo-400 rounded-full border border-indigo-500/20">
+                <i data-lucide="cloud-upload" class="w-10 h-10"></i>
               </div>
               <div class="space-y-1">
-                <p class="text-xs font-bold text-slate-300">Belum ada dokumen yang dipindai</p>
-                <p class="text-[11px] text-slate-500 max-w-xs leading-relaxed">Selesaikan pemotongan bidang gambar, atur bahasa, lalu pilih tombol "Mulai Ekstraksi Teks" di atas.</p>
+                <p class="text-sm font-bold text-slate-200">Seret & lepas berkas di sini</p>
+                <p class="text-xs text-slate-400">Mendukung format gambar PNG, JPEG, atau WebP</p>
+              </div>
+              <button type="button" id="browse-btn"
+                class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-slate-800 hover:bg-indigo-650 hover:text-white text-slate-200 font-semibold text-xs rounded-lg transition-all duration-200 border border-slate-700 shadow-sm gap-2">
+                <i data-lucide="folder-search" class="w-3.5 h-3.5"></i>
+                Pilih Gambar Manual
+              </button>
+            </div>
+          </div>
+
+          <!-- Context 2: Live Camera Viewport (hidden initially) -->
+          <div id="camera-panel" class="hidden flex-1 p-6 flex flex-col items-center justify-center space-y-4">
+            <div
+              class="relative w-full aspect-video rounded-xl overflow-hidden bg-slate-950 shadow-inner max-h-[400px] border border-slate-800">
+              <video id="camera-preview" autoplay playsinline class="w-full h-full object-cover"></video>
+              <div
+                class="absolute bottom-3 left-3 bg-red-600 text-white text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded flex items-center gap-1.5 animate-pulse">
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-white"></span>
+                LIVE CAMERA
               </div>
             </div>
+            <div class="flex flex-wrap items-center justify-center gap-3 w-full">
+              <!-- Rotate/Toggle Rear Camera -->
+              <button type="button" id="camera-toggle-btn"
+                class="inline-flex items-center justify-center px-4 py-2.5 bg-slate-800 hover:bg-slate-750 text-slate-200 font-semibold text-xs rounded-xl transition-all duration-200 border border-slate-700 gap-2 shadow-xs">
+                <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                Ganti Kamera (Toggle Front/Back)
+              </button>
+              <!-- Snapshot Capture Trigger -->
+              <button type="button" id="camera-capture-btn"
+                class="inline-flex items-center justify-center px-6 py-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-505 hover:to-violet-505 text-white font-bold text-xs rounded-xl transition-all duration-200 shadow-lg shadow-indigo-600/10 gap-2">
+                <i data-lucide="aperture" class="w-4 h-4"></i>
+                Ambil Foto Dokumen
+              </button>
+            </div>
+          </div>
 
-            <!-- Text area box container -->
-            <div id="workspace-content" class="hidden flex-1 flex flex-col space-y-0">
-              <textarea id="output-textarea" placeholder="Hasil ekstraksi teks OCR akan tampil di sini..." class="w-full flex-1 p-5 bg-slate-950 font-mono text-sm leading-relaxed text-indigo-100 placeholder-slate-600 border-none outline-none focus:ring-0 min-h-[200px]" rows="10"></textarea>
-              
-              <!-- Footer workspace control utilities -->
-              <div class="flex flex-wrap items-center gap-2 p-4 bg-slate-900/60 border-t border-slate-800">
-                <button type="button" id="copy-all-btn" class="flex-1 min-w-[120px] inline-flex items-center justify-center px-4 py-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-semibold text-xs rounded-xl transition-all duration-150 gap-2 shadow-md shadow-indigo-500/10">
-                  <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-                  Salin ke Clipboard
+          <!-- Context 3: Interactive Cropper Viewport (hidden initially, shown when image loaded) -->
+          <div id="cropper-panel" class="hidden flex-1 p-6 flex flex-col space-y-4">
+            <div
+              class="w-full bg-slate-950 rounded-xl overflow-hidden flex items-center justify-center min-h-[300px] border border-slate-800 relative">
+              <!-- Guide dots backdrop for cyber flavor -->
+              <div
+                class="absolute inset-0 opacity-40 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none">
+              </div>
+              <div class="max-w-full z-10">
+                <img id="cropper-image" src="" alt="Workspace" class="block max-w-full h-auto" />
+              </div>
+            </div>
+            <!-- Cropper Action Controllers -->
+            <div id="cropper-toolbox"
+              class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 flex flex-wrap items-center justify-between gap-3">
+              <p class="text-xs text-slate-400 font-semibold">Atur batas kotak untuk memilih teks:</p>
+              <div class="flex flex-wrap items-center gap-1.5">
+                <button type="button" id="crop-zoom-in" title="Perbesar"
+                  class="p-2 hover:bg-indigo-950/40 hover:text-indigo-400 text-slate-300 rounded-lg border border-slate-700 bg-slate-850 transition-all shadow-xs">
+                  <i data-lucide="zoom-in" class="w-4 h-4"></i>
                 </button>
-                <button type="button" id="download-txt-btn" class="flex-1 min-w-[120px] inline-flex items-center justify-center px-4 py-2.5 bg-slate-800 hover:bg-slate-750 text-slate-200 font-semibold text-xs rounded-xl transition-all duration-150 gap-2 border border-slate-700">
-                  <i data-lucide="file-down" class="w-3.5 h-3.5"></i>
-                  Unduh File (.txt)
+                <button type="button" id="crop-zoom-out" title="Perkecil"
+                  class="p-2 hover:bg-indigo-950/40 hover:text-indigo-400 text-slate-300 rounded-lg border border-slate-700 bg-slate-850 transition-all shadow-xs">
+                  <i data-lucide="zoom-out" class="w-4 h-4"></i>
                 </button>
-                <button type="button" id="clear-all-btn" class="inline-flex items-center justify-center p-2.5 bg-slate-850 hover:bg-red-950/50 hover:text-red-400 hover:border-red-900 text-slate-400 rounded-xl transition-all duration-150 border border-slate-750" title="Bersihkan Semua">
-                  <i data-lucide="trash-2" class="w-4 h-4"></i>
+                <button type="button" id="crop-rotate-left" title="Putar Kiri"
+                  class="p-2 hover:bg-indigo-950/40 hover:text-indigo-400 text-slate-300 rounded-lg border border-slate-700 bg-slate-850 transition-all shadow-xs">
+                  <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                </button>
+                <button type="button" id="crop-rotate-right" title="Putar Kanan"
+                  class="p-2 hover:bg-indigo-950/40 hover:text-indigo-400 text-slate-300 rounded-lg border border-slate-700 bg-slate-850 transition-all shadow-xs">
+                  <i data-lucide="rotate-cw" class="w-4 h-4"></i>
+                </button>
+                <button type="button" id="crop-flip-h" title="Balik Horizontal"
+                  class="p-2 hover:bg-indigo-950/40 hover:text-indigo-400 text-slate-300 rounded-lg border border-slate-700 bg-slate-850 transition-all shadow-xs">
+                  <i data-lucide="flip-horizontal" class="w-4 h-4"></i>
+                </button>
+                <button type="button" id="crop-reset" title="Batalkan Perubahan"
+                  class="inline-flex items-center px-3 py-2 bg-slate-850 hover:bg-red-950/40 hover:text-red-400 text-slate-300 rounded-lg border border-slate-700 transition-all shadow-xs gap-1 text-xs font-semibold">
+                  <i data-lucide="undo-2" class="w-3.5 h-3.5"></i>
+                  Reset
+                </button>
+                <button type="button" id="crop-load-new" title="Ubah Gambar"
+                  class="inline-flex items-center px-3 py-2 bg-slate-850 hover:bg-indigo-950/40 hover:text-indigo-400 text-slate-300 rounded-lg border border-slate-700 transition-all shadow-xs gap-1 text-xs font-semibold">
+                  <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+                  Ganti
                 </button>
               </div>
             </div>
           </div>
+        </div>
 
-        </section>
+        <!-- Instructions/Advantage Card helper for Users -->
+        <div id="instruction-card"
+          class="bg-indigo-950/20 rounded-2xl p-5 border border-indigo-950/80 flex gap-4 items-start">
+          <div class="p-2.5 bg-indigo-500/10 text-indigo-450 rounded-xl">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+          </div>
+          <div class="space-y-1">
+            <h4 class="text-sm font-bold text-indigo-350">Tips Hasil Maksimal</h4>
+            <p class="text-xs text-indigo-200/90 leading-relaxed">Posisikan teks secara tegak dan potong dengan pas
+              hanya pada bidang paragraf atau kolom yang Anda butuhkan. Ini akan mencegah distorsi background dan
+              meningkatkan kecepatan akurasi mesin AI OCR.</p>
+          </div>
+        </div>
 
-      </div>
-    </main>
+      </section>
 
-    <!-- Global Footer -->
-    <footer id="app-footer" class="border-t border-slate-900 bg-slate-950 mt-16 py-8 text-center text-xs text-slate-400">
-      <div class="max-w-7xl mx-auto px-4 space-y-1">
-        <p class="font-medium text-slate-300">&copy; 2026 Agustus - Faizal Dwi Al Farizi</p>
-        <p class="text-slate-500 font-mono text-[11px]">v<span id="app-version">1.0.0</span></p>
-      </div>
-    </footer>
+      <!-- COLUMN 2: OCR CONFIGURATION, PROGRESS TRACKER & OUTPUT AREA (5 columns wide) -->
+      <section id="column-extract" class="lg:col-span-12 xl:col-span-5 space-y-6">
 
-    <!-- Import main bundle entry script -->
-    <script>
-      // Automatically trigger Lucide SVG rendering when DOM parses
-      document.addEventListener('DOMContentLoaded', function() {
-        if (window.lucide) {
-          window.lucide.createIcons();
-        }
-      });
-    </script>
-  </body>
+        <!-- Engine Settings Panel Card -->
+        <div id="config-card" class="bg-slate-900/50 rounded-2xl p-6 border border-slate-850 space-y-5 shadow-lg">
+          <h3 class="text-md font-bold text-white flex items-center gap-1.5">
+            <i data-lucide="settings" class="w-4 h-4 text-indigo-400"></i>
+            Konfigurasi Mesin OCR
+          </h3>
+
+          <!-- Language Selector Dropdown -->
+          <div class="space-y-2">
+            <label for="ocr-language" class="block text-xs font-bold text-slate-400 uppercase tracking-wider">Bahasa
+              Dokumen Gambar</label>
+            <div class="relative">
+              <select id="ocr-language"
+                class="w-full pl-3 pr-10 py-3 bg-slate-950 hover:bg-slate-900 border border-slate-700/80 rounded-xl font-medium text-sm transition-all text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-550 focus:border-indigo-550">
+                <option value="ind" selected>Bahasa Indonesia ('ind')</option>
+                <option value="eng">Bahasa Inggris ('eng')</option>
+                <option value="ind+eng">Kombinasi Indonesia + Inggris</option>
+                <option value="jpa">Bahasa Jepang ('jpa')</option>
+                <option value="zho_sim">Bahasa Cina Sederhana ('zho_sim')</option>
+                <option value="ara">Bahasa Arab ('ara')</option>
+              </select>
+              <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400">
+                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+              </div>
+            </div>
+            <p class="text-[11px] text-slate-500">Mesin akan mengunduh paket data latih bahasa yang sesuai langsung ke
+              browser Anda secara otomatis.</p>
+          </div>
+
+          <!-- Core Trigger Trigger button -->
+          <button type="button" id="extract-trigger-btn" disabled
+            class="w-full py-4 px-6 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/10 disabled:from-slate-800 disabled:to-slate-800 disabled:text-slate-600 disabled:shadow-none disabled:cursor-not-allowed">
+            <i data-lucide="scan" class="w-4 h-4"></i>
+            Mulai Ekstraksi Teks (OCR)
+          </button>
+        </div>
+
+        <!-- Live Progress Tracker Pane (hidden by default) -->
+        <div id="progress-card"
+          class="hidden bg-slate-900/70 rounded-2xl p-6 border border-indigo-900/60 shadow-lg space-y-4">
+          <div class="flex items-center justify-between text-xs font-bold">
+            <span id="progress-state" class="text-indigo-400 flex items-center gap-1.5">
+              <i data-lucide="loader-2" class="w-3.5 h-3.5 animate-spin"></i>
+              Menginisialisasi Engine...
+            </span>
+            <span id="progress-percent"
+              class="text-indigo-400 bg-indigo-950/50 border border-indigo-900 px-2 py-0.5 rounded-full">0%</span>
+          </div>
+          <!-- Progress Bar Tracker -->
+          <div class="w-full h-2.5 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
+            <div id="progress-bar"
+              class="h-full bg-gradient-to-r from-indigo-500 to-violet-500 transition-all duration-155 rounded-full"
+              style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Extracted Text Workspace Area -->
+        <div id="workspace-card"
+          class="bg-slate-900 rounded-2xl border border-slate-800 shadow-md space-y-0 flex flex-col min-h-[350px] overflow-hidden">
+          <div class="flex items-center justify-between border-b border-slate-800/80 px-5 py-3.5 bg-slate-900/50">
+            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+              <i data-lucide="terminal" class="w-4 h-4 text-emerald-400"></i>
+              Terminal Hasil Ekstraksi
+            </h3>
+            <!-- Copy trigger badge feedback -->
+            <span id="copy-success-badge"
+              class="hidden text-[10px] bg-emerald-950/80 text-emerald-300 border border-emerald-900 font-bold tracking-wide px-2.5 py-0.5 rounded">
+              BERHASIL DISALIN!
+            </span>
+          </div>
+
+          <!-- Empty State Context -->
+          <div id="workspace-empty" class="flex-1 flex flex-col items-center justify-center text-center p-8 space-y-4">
+            <div class="p-3 bg-slate-950 text-slate-500 rounded-full border border-slate-850">
+              <i data-lucide="file-text" class="w-8 h-8"></i>
+            </div>
+            <div class="space-y-1">
+              <p class="text-xs font-bold text-slate-300">Belum ada dokumen yang dipindai</p>
+              <p class="text-[11px] text-slate-500 max-w-xs leading-relaxed">Selesaikan pemotongan bidang gambar, atur
+                bahasa, lalu pilih tombol "Mulai Ekstraksi Teks" di atas.</p>
+            </div>
+          </div>
+
+          <!-- Text area box container -->
+          <div id="workspace-content" class="hidden flex-1 flex flex-col space-y-0">
+            <textarea id="output-textarea" placeholder="Hasil ekstraksi teks OCR akan tampil di sini..."
+              class="w-full flex-1 p-5 bg-slate-950 font-mono text-sm leading-relaxed text-indigo-100 placeholder-slate-600 border-none outline-none focus:ring-0 min-h-[200px]"
+              rows="10"></textarea>
+
+            <!-- Footer workspace control utilities -->
+            <div class="flex flex-wrap items-center gap-2 p-4 bg-slate-900/60 border-t border-slate-800">
+              <button type="button" id="copy-all-btn"
+                class="flex-1 min-w-[120px] inline-flex items-center justify-center px-4 py-2.5 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-semibold text-xs rounded-xl transition-all duration-150 gap-2 shadow-md shadow-indigo-500/10">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                Salin ke Clipboard
+              </button>
+              <button type="button" id="download-txt-btn"
+                class="flex-1 min-w-[120px] inline-flex items-center justify-center px-4 py-2.5 bg-slate-800 hover:bg-slate-750 text-slate-200 font-semibold text-xs rounded-xl transition-all duration-150 gap-2 border border-slate-700">
+                <i data-lucide="file-down" class="w-3.5 h-3.5"></i>
+                Unduh File (.txt)
+              </button>
+              <button type="button" id="clear-all-btn"
+                class="inline-flex items-center justify-center p-2.5 bg-slate-850 hover:bg-red-950/50 hover:text-red-400 hover:border-red-900 text-slate-400 rounded-xl transition-all duration-150 border border-slate-750"
+                title="Bersihkan Semua">
+                <i data-lucide="trash-2" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer id="app-footer" class="border-t border-slate-900 bg-slate-950 mt-16 py-8 text-center text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 space-y-1">
+      <p class="font-medium text-slate-300">&copy; 2026 Agustus - Faizal Dwi Al Farizi</p>
+      <p class="text-slate-500 font-mono text-[11px]">v<span id="app-version">1.0.0</span></p>
+    </div>
+  </footer>
+
+  <!-- Import main bundle entry script -->
+  <script>
+    // Automatically trigger Lucide SVG rendering when DOM parses
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+</body>
+
 </html>
