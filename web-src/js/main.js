@@ -58,6 +58,13 @@ const copySuccessBadge = document.getElementById('copy-success-badge');
 // INISIALISASI APPLIKASI SISI KLIEN
 document.addEventListener('DOMContentLoaded', () => {
   setupEventListeners();
+  
+  // Set nomor versi secara dinamis dari package.json (via Vite define)
+  const appVersionEl = document.getElementById('app-version');
+  if (appVersionEl && typeof __APP_VERSION__ !== 'undefined') {
+    appVersionEl.textContent = __APP_VERSION__;
+  }
+
   // Jalankan render awal icons jika fungsi global tersedia
   if (window.lucide) {
     window.lucide.createIcons();
