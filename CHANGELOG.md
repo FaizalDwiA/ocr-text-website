@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.0](https://github.com/FaizalDwiA/oct-text-website/compare/v1.1.0...v1.2.0) (2026-08-02)
+
+### Features
+
+* perbaiki release it agar bisa atur versinya dan push ([1afee1b](https://github.com/FaizalDwiA/oct-text-website/commit/1afee1b710236bd841c291252b0ec7068807d74b))
+
 ## 1.1.0 (2026-08-02)
 
 ### Features
