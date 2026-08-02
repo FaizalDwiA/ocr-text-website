@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@import "cropperjs/dist/cropper.css";
+
+/* Cosmic layout dot mesh pattern as seen in Sleek design theme */
+.cosmic-mesh {
+  background-image: radial-gradient(rgba(99, 102, 241, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Custom style tweaks for the Interactive Cropper overlay and camera frames */
+.cropper-container {
+  max-height: 450px !important;
+  background-color: #0f172a !important; /* Slate-900 black */
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+/* Make cropper selections glow indigo and clear */
+.cropper-view-box {
+  outline: 2px solid #6366f1 !important;
+  outline-color: #6366f1 !important;
+}
+.cropper-line {
+  background-color: #6366f1 !important;
+}
+.cropper-point {
+  background-color: #6366f1 !important;
+  border-radius: 2px;
+}
+
+/* Ensure custom styling for the video frame stream and general app styling */
+video {
+  border-radius: 0.75rem;
+  background-color: #020617;
+}
+
+/* Custom scrollbars inside textareas and workspaces */
+textarea::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+textarea::-webkit-scrollbar-track {
+  background: #090d16;
+}
+textarea::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+textarea::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}

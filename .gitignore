@@ -1,0 +1,21 @@
+# Core ignores
+node_modules/
+.DS_Store
+*.log
+.env
+.env.local
+.env.*.local
+
+# Local IDEs and caches
+.vscode/
+.idea/
+.project
+.settings/
+.npm
+.eslintcache
+
+# Local build / bundling temporary files
+dist/
+build/
+.vite/
+.parcel-cache/

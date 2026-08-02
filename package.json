@@ -1,0 +1,22 @@
+{
+  "name": "smart-ocr-text-extractor",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port=3000 --host=0.0.0.0",
+    "build": "node -e \"const fs = require('fs'); ['assets', 'index.html'].forEach(f => { if (fs.existsSync(f)) fs.rmSync(f, {recursive: true, force: true}) })\" && vite build",
+    "preview": "vite preview --port=3000 --host=0.0.0.0",
+    "clean": "node -e \"const fs = require('fs'); ['assets', 'index.html'].forEach(f => { if (fs.existsSync(f)) fs.rmSync(f, {recursive: true, force: true}) })\"",
+    "lint": "echo 'No linting needed for pure JS'"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.14",
+    "cropperjs": "^1.6.2",
+    "tesseract.js": "^7.0.0",
+    "vite": "^6.2.3"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.14"
+  }
+}

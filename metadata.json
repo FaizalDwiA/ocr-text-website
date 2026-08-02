@@ -1,0 +1,6 @@
+{
+  "name": "Smart OCR Text Extractor",
+  "description": "Ekstraktor teks berbasis AI OCR yang berjalan 100% di browser dengan fitur pemotongan gambar dan kamera langsung.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
