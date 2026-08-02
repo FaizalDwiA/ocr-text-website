@@ -12,6 +12,10 @@ export default defineConfig({
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),
   },
+  build: {
+    outDir: '../docs',
+    emptyOutDir: true,
+  },
   server: {
     port: 1174,
     host: '0.0.0.0',
